@@ -24,41 +24,32 @@ for (j = 8; j < 18; j++){
     //Adds column with hour
     $(`#${j}`).append(`<div class="col-1 pt-3 hour">${moment(j, ["HH"]).format("h A")}</div>`);
     //Adds column with textbox
-    $(`#${j}`).append(`<div class="col-10 pl-0" id="user-text${j}"><textarea></textarea></div>`);
+    $(`#${j}`).append(`<div class="col-10 pl-0" id="${j}user-text"><textarea></textarea></div>`);
     //Adds column with save button
-    $(`#${j}`).append(`<div class="col-1 saveBtn"><i class="fas fa-save save-icon" for="user-text${j}" type="submit"></i></div>`);
+    $(`#${j}`).append(`<div class="col-1 saveBtn"><i class="fas fa-save save-icon" for="${j}user-text" type="submit"></i></div>`);
 
 
    //Add past/present/future classes by comparing current hour with row's hour
     let rowHour = moment().set('hour', j).startOf("hour");
     if(rowHour.isBefore(currentHour)){
-        $(`#user-text${j}`).addClass('past');
+        $(`#${j}user-text`).addClass('past');
     } else if(rowHour.isSame(currentHour)){
-        $(`#user-text${j}`).addClass('present');
+        $(`#${j}user-text`).addClass('present');
     } else if(rowHour.isAfter(currentHour)){
-        $(`#user-text${j}`).addClass('future');
+        $(`#${j}user-text`).addClass('future');
     };
 
 };
 
 //Pulls data from local storage to add to container
 function retrieveUserData(){
-
-    userData = JSON.parse(localStorage.getItem("usersCurrentPlanner"));
-
-    //If there is no user Data
-    if(!userData){
-        return;
-    }else{
-        //Check each item in local Storage and stick it in the appropriate textareas
-        for(k = 0; k < userData.length; k++){
-            if(userData[k].TextID) {
-                $(`#${userData[k].TextID} textarea`).val(userData[k].Content);
-            }else {
-                return;
-            };
-        };
+    
+    //If null, won't add anything;
+    for(k = 8; k < 18; k++){
+        let test = localStorage.getItem(`${k}user-text`);
+        $(`#${k}user-text textarea`).val(test);
     };
+
 };
 
 retrieveUserData();
@@ -70,25 +61,13 @@ $(`.save-icon`).click(function(e) {
     userDataID = $(this).attr('for');
     //To show content listed in specific textarea
     userTextContent = $(`#${userDataID} textarea`).val();
+    //Add an item to localStorage
+    localStorage[`${userDataID}`] = userTextContent;
 
+    //To remove items
     if(!userTextContent){
         localStorage.removeItem(`${userDataID}`);
         return;
-    } else {
-        alert("works");
     };
 
-    //Put user's text into an object
-    textObj = {TextID: userDataID, Content: userTextContent};
-    //Get previous text items
-    allText = JSON.parse(localStorage.getItem("usersCurrentPlanner"))
-    //If nothing is currently in local Storage
-    if(!allText){
-        allText = [];
-        allText[0] = textObj;
-    } else {
-        allText.push(textObj);
-    };
-    //Convert object to string and put in local Storage
-    localStorage.setItem("usersCurrentPlanner", JSON.stringify(allText));
 });
