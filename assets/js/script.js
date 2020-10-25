@@ -1,4 +1,9 @@
+//Variables
+const currentMoment = moment();
+const currentHour = moment().hour();
+
 //Add current day/time to the jumbotron
+$('#currentDay').append(currentMoment.format('dddd[:] LL[ at] LT'));
 
 //append timeblocks between 8-5
 //must add classes, hours (parseInt for later), maybe attributes
