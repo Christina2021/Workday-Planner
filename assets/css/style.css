@@ -80,7 +80,7 @@ textarea{
 
 /* When the save-button is hovered over */
 .saveBtn i:hover {
-  font-size: 25px;
+  font-size: 20px;
   transition: all .3s ease-in-out;
   color: darkslategrey;
 }
@@ -91,4 +91,5 @@ textarea{
   position: relative;
   top: 40%;
   left: 30%;
+  cursor: pointer;
 }
