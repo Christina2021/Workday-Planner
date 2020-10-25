@@ -4,6 +4,16 @@ body {
   line-height: 1;
 }
 
+/* Top Header */
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+  color: black;
+  border-radius: 0;
+  border-bottom: 10px solid black;
+}
+
+/* For content boxes? */
 textarea{
   background: transparent;
   border: none;
@@ -11,14 +21,6 @@ textarea{
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
-}
-
-.jumbotron {
-  text-align: center;
-  background-color: transparent;
-  color: black;
-  border-radius: 0;
-  border-bottom: 10px solid black;
 }
 
 .description{
@@ -30,33 +32,39 @@ textarea{
   border-radius: 15px;
 }
 
+/* Each Row */
 .row {
   white-space: pre-wrap;
   height: 80px;
   border-top: 1px solid white;;
 }
 
+/* Hour column */
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
 }
 
+/* Event blocks in the past */
 .past {
   background-color: #d3d3d3;
   color: white;
 }
 
+/* Event blocks in the present */
 .present {
   background-color: #ff6961;
   color: white;
 }
 
+/* Event blocks in the future */
 .future {
   background-color: #77dd77;
   color: white;
 }
 
+/* Styling the save button */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
@@ -65,6 +73,7 @@ textarea{
   color: white;
 }
 
+/* When the save-button is hovered over */
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
