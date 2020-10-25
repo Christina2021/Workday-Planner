@@ -14,14 +14,7 @@ body {
 }
 
 /* For content boxes? */
-textarea{
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-}
+
 
 .description{
   white-space: pre-wrap;
@@ -44,6 +37,18 @@ textarea{
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+}
+
+/* Textarea column*/
+textarea{
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
 }
 
 /* Event blocks in the past */
@@ -75,6 +80,15 @@ textarea{
 
 /* When the save-button is hovered over */
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 25px;
   transition: all .3s ease-in-out;
+  color: darkslategrey;
+}
+
+/* Save icon */
+.save-icon {
+  display: block;
+  position: relative;
+  top: 40%;
+  left: 30%;
 }
