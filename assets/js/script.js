@@ -1,13 +1,6 @@
 //Variables
 const currentMoment = moment();
 const currentHour = moment().startOf('hour');
-//Retreiving local Storage
-let userData;
-//Saving to local Storage
-let userDataID;
-let userTextContent;
-let textObj;
-let allText;
 
 //Add current day/time to the jumbotron
 $('#currentDay').append(currentMoment.format('dddd[:] LL[ at] LT'));
@@ -24,7 +17,7 @@ for (j = 8; j < 18; j++){
     //Adds column with hour
     $(`#${j}`).append(`<div class="col-1 pt-3 hour">${moment(j, ["HH"]).format("h A")}</div>`);
     //Adds column with textbox
-    $(`#${j}`).append(`<div class="col-10 pl-0" id="${j}user-text"><textarea></textarea></div>`);
+    $(`#${j}`).append(`<div class="col-10 px-0" id="${j}user-text"><textarea></textarea></div>`);
     //Adds column with save button
     $(`#${j}`).append(`<div class="col-1 saveBtn"><i class="fas fa-save save-icon" for="${j}user-text" type="submit"></i></div>`);
 
@@ -52,10 +45,13 @@ function retrieveUserData(){
 
 };
 
+//Calls function upon opening page
 retrieveUserData();
 
 //Save button needs to save to local storage
 $(`.save-icon`).click(function(e) {
+    let userDataID;
+    let userTextContent;
 
     //To pull ID of specific textarea
     userDataID = $(this).attr('for');
