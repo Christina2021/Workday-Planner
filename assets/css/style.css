@@ -13,18 +13,6 @@ body {
   border-bottom: 10px solid black;
 }
 
-/* For content boxes? */
-
-
-.description{
-  white-space: pre-wrap;
-}
-
-.time-block{
-  text-align: center;
-  border-radius: 15px;
-}
-
 /* Each Row */
 .row {
   white-space: pre-wrap;
