@@ -22,6 +22,8 @@ Once the site opens up, you will be able to see the current date and time at the
 ⭐ Once you have finished adding content, you may click on the save button to the right of the row to keep the content saved (to your localStorage).  This will keep your content saved even if you refresh or navigate away from the page.\
 ⭐ To remove content, you may simply delete out the content that you had written, and then save once it has been deleted.
 
+#### Notes on Usage
+⭐ The color of the timeblock will update real-time, so you will not need to refresh the page for this to update whenever a new hour starts.
 
 ## What I Learned 💭
 I had to learn a lot about moment.js before beginning this assignment.  I had attempted to begin the assignment after reviewing some of the moment.js docs, but I was having a difficult time.  Once I had researched further into it through additional resources, as well as some practice, I was able to understand moment.js much easier and did not have too much trouble adding it into my site.\
