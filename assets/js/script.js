@@ -1,9 +1,11 @@
 //Variables
-const currentMoment = moment();
 const currentHour = moment().startOf('hour');
 
-//Add current day/time to the jumbotron
-$('#currentDay').append(currentMoment.format('dddd[:] LL[ at] LT'));
+//Add current day/time to the jumbotron (live time)
+function currentTime() {
+    $('#currentDay').html(moment().format('dddd[:] LL[ at] h[:]mm[:]ss A'));
+};
+setInterval(currentTime, 1000);
 
 //append timeblocks between 8-5
 //Create/Append rows for each timeblock (8-18 is for the hours for the timeblocks)
