@@ -19,17 +19,17 @@ function updatePastPresentFuture(hour) {
     for (let k = 8; k < 18; k++){
         let rowHour = moment().set('hour', k).startOf('hour');
         if(rowHour.isBefore(hour)){
-            $(`#${k}user-text`).removeClass('present');
-            $(`#${k}user-text`).removeClass('future');
-            $(`#${k}user-text`).addClass('past');
+            $(`#${k}user-text-box`).removeClass('present');
+            $(`#${k}user-text-box`).removeClass('future');
+            $(`#${k}user-text-box`).addClass('past');
         } else if(rowHour.isSame(hour)){
-            $(`#${k}user-text`).removeClass('past');
-            $(`#${k}user-text`).removeClass('future');
-            $(`#${k}user-text`).addClass('present');
+            $(`#${k}user-text-box`).removeClass('past');
+            $(`#${k}user-text-box`).removeClass('future');
+            $(`#${k}user-text-box`).addClass('present');
         } else if(rowHour.isAfter(hour)){
-            $(`#${k}user-text`).removeClass('past');
-            $(`#${k}user-text`).removeClass('present');
-            $(`#${k}user-text`).addClass('future');
+            $(`#${k}user-text-box`).removeClass('past');
+            $(`#${k}user-text-box`).removeClass('present');
+            $(`#${k}user-text-box`).addClass('future');
         };
     };
 };
@@ -46,9 +46,9 @@ for (let j = 8; j < 18; j++){
     //Adds column with hour
     $(`#${j}`).append(`<div class="col-1 pt-3 hour">${moment(j, ["HH"]).format("h A")}</div>`);
     //Adds column with textbox
-    $(`#${j}`).append(`<div class="col-10 px-0" id="${j}user-text"><textarea></textarea></div>`);
+    $(`#${j}`).append(`<div class="col-10 px-0" id="${j}user-text-box"><textarea></textarea></div>`);
     //Adds column with save button
-    $(`#${j}`).append(`<div class="col-1 saveBtn"><i class="fas fa-save save-icon" for="${j}user-text" type="submit"></i></div>`);
+    $(`#${j}`).append(`<div class="col-1 saveBtn"><i class="fas fa-save save-icon" id="${j}user-text" type="submit"></i></div>`);
 
    //Add past/present/future classes by comparing current hour with row's hour
    updatePastPresentFuture(currentHour);
@@ -59,8 +59,8 @@ function retrieveUserData(){
     
     //If null, won't add anything;
     for(k = 8; k < 18; k++){
-        let test = localStorage.getItem(`${k}user-text`);
-        $(`#${k}user-text textarea`).val(test);
+        let savedText = localStorage.getItem(`${k}user-text-box`);
+        $(`#${k}user-text-box textarea`).val(savedText);
     };
 
 };
@@ -74,15 +74,15 @@ $(`.save-icon`).click(function() {
     let userTextContent;
 
     //To pull ID of specific textarea
-    userDataID = $(this).attr('for');
+    userDataID = $(this).attr('id');
     //To show content listed in specific textarea
-    userTextContent = $(`#${userDataID} textarea`).val();
+    userTextContent = $(`#${userDataID}-box textarea`).val();
     //Add an item to localStorage
-    localStorage[`${userDataID}`] = userTextContent;
+    localStorage[`${userDataID}-box`] = userTextContent;
 
     //To remove items
     if(!userTextContent){
-        localStorage.removeItem(`${userDataID}`);
+        localStorage.removeItem(`${userDataID}-box`);
         return;
     };
 
